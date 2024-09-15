@@ -1,0 +1,8 @@
+[
+    {"id": "1", "company": "CompanyA", "sales": 150},
+    {"id": "1", "company": "CompanyA", "sales": 200},
+    {"id": "2", "company": "CompanyB", "sales": 300},
+    {"id": "2", "company": "CompanyB", "sales": 250},
+    {"id": "3", "company": "CompanyC", "sales": 400},
+    {"id": "3", "company": "CompanyC", "sales": 350}
+]

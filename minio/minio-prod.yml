@@ -1,0 +1,37 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    app: minio
+  name: minio
+  namespace: minio-prod
+spec:
+  containers:
+  - name: minio
+    image: quay.io/minio/minio:latest
+    command:
+    - /bin/bash
+    - -c
+    args: 
+    - minio server /data --console-address :9090
+    volumeMounts:
+    - mountPath: /data
+      name: localvolume
+    env:
+    - name: MINIO_ROOT_USER
+      valueFrom:
+        secretKeyRef:
+          name: minio-secret
+          key: MINIO_ROOT_USER
+    - name: MINIO_ROOT_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          name: minio-secret
+          key: MINIO_ROOT_PASSWORD
+  nodeSelector:
+    kubernetes.io/hostname: minikube
+  volumes:
+  - name: localvolume
+    hostPath:
+      path: /home/lmdcma27/minio-spark-kafka/minio-data
+      type: DirectoryOrCreate

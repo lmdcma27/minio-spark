@@ -1,0 +1,32 @@
+apiVersion: sparkoperator.k8s.io/v1beta2
+kind: SparkApplication
+metadata:
+  name: spark-pi
+  namespace: minio-prod
+spec:
+  type: Python
+  pythonVersion: '3'
+  mode: cluster
+  image: lucianomdc/sparkjob:1.0
+  imagePullPolicy: Always
+  mainClass: org.apache.spark.examples.SparkPi
+  mainApplicationFile: local:///app/spark_job2.py
+  sparkVersion: 3.5.0
+  driver:
+    labels:
+      version: 3.5.0
+    cores: 1
+    coreLimit: 1200m
+    memory: 512m
+    serviceAccount: spark-operator
+  executor:
+    labels:
+      version: 3.5.0
+    instances: 1
+    cores: 1
+    coreLimit: 1200m
+    memory: 512m
+  deps:
+    jars:
+      - https://repo1.maven.org/maven2/org/apache/hadoop/hadoop-aws/3.4.0/hadoop-aws-3.4.0.jar
+      - https://repo1.maven.org/maven2/com/amazonaws/aws-java-sdk-bundle/1.12.262/aws-java-sdk-bundle-1.12.262.jar
