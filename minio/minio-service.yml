@@ -15,4 +15,4 @@ spec:
       port: 9090
       targetPort: 9090
       name: minio-console
-  type: NodePort # Use NodePort if LoadBalancer is not supported in your environment
+  type: NodePort

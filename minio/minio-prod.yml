@@ -33,5 +33,5 @@ spec:
   volumes:
   - name: localvolume
     hostPath:
-      path: /home/lmdcma27/minio-spark-kafka/minio-data
+      path: <point_to_some_existing_path>
       type: DirectoryOrCreate
