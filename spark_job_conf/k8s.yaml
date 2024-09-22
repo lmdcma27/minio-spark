@@ -10,7 +10,7 @@ spec:
   image: lucianomdc/sparkjob:1.0
   imagePullPolicy: Always
   mainClass: org.apache.spark.examples.SparkPi
-  mainApplicationFile: local:///app/spark_job2.py
+  mainApplicationFile: local:///app/spark_job.py
   sparkVersion: 3.5.0
   driver:
     labels:
